@@ -59,7 +59,7 @@ resource "aws_instance" "my_amazon" {
   )
   
 
-user_data  = file("install_httpd.sh")
+#user_data  = file("install_httpd.sh")
 }
 
 

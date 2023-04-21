@@ -1,5 +1,5 @@
 ---
-- hosts: tag_acs730
+- hosts: linux
   gather_facts: True
   become: yes
   
@@ -24,15 +24,6 @@
     - name: Print Linux Family
       debug: var=ansible_os_family
       
-    - name: Copy index.html
-      copy: src={{ source_file }} dest={{ dest_file }} mode=0555
-      notify: Restart Httpd
-      when: ansible_os_family == "RedHat"
-      
-    - name: Copy index.html
-      copy: src={{ source_file }} dest={{ dest_file }} mode=0555
-      notify: Restart Apache2
-      when: ansible_os_family == "Debian"
       
     - name: Start Apache Web Server
       service: name=httpd state=started enabled=yes
