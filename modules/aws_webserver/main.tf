@@ -94,6 +94,7 @@ resource "aws_instance" "my_amazon1" {
 
 
 
+
 # Webserver 3
 resource "aws_instance" "my_amazon2" {
   ami                         = data.aws_ami.latest_amazon_linux.id
@@ -223,6 +224,7 @@ resource "aws_ebs_volume" "web_ebs" {
   )
 }
 
+
 # Adding SSH  key to instance
 resource "aws_key_pair" "week6" {
   key_name   = "week6-prod"
@@ -260,6 +262,7 @@ resource "aws_security_group" "private_sg" {
     }
   )
 }
+
 
 
 # Webserver 5
@@ -315,5 +318,5 @@ resource "aws_instance" "my_amazon5" {
     }
   
   
-#user_data  = file("install_httpd.sh")
+#user_data  = file("install_httpd.sh")Meharaj
 }
