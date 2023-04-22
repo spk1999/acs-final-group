@@ -33,7 +33,7 @@ variable "instance_type" {
 }
 
 variable "bucket_name" {
-  default     = "acs730-week6-sshrestha63"
+  default     = "group-17-s3-bucket1"
   type        = string
   description = "Bucket Name"
 }

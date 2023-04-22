@@ -51,15 +51,12 @@ resource "aws_instance" "my_amazon" {
   lifecycle {
     create_before_destroy = true
    }  
-  
-  tags = merge(var.default_tags,
-    {
-      "Name" = "${var.prefix}-Amazon-Linux : ${var.env} Server 1"
+     tags = {
+      "Name" = "Web-Amazon-Linux : Server 1"
     }
-  )
-  
+       user_data  = file("install_httpd.sh")
 
-user_data  = file("install_httpd.sh")
+  
 }
 
 
@@ -73,6 +70,8 @@ resource "aws_instance" "my_amazon1" {
   associate_public_ip_address = true
   availability_zone           = element(data.aws_availability_zones.available.names, 1)
   security_groups        =      [aws_security_group.acs730w6.id]
+  user_data  = file("install_httpd.sh")
+
   
 
   # Added to encrypt if env = "production"
@@ -84,14 +83,13 @@ resource "aws_instance" "my_amazon1" {
     create_before_destroy = true
    }  
   
-  tags = merge(var.default_tags,
-    {
+  
+  tags =  {
       "Name" = "${var.prefix}-Amazon-Linux : ${var.env} Server 2"
     }
-  )
+  
   
 
-user_data  = file("install_httpd.sh")
 }
 
 
@@ -284,11 +282,10 @@ resource "aws_instance" "my_amazon4" {
     create_before_destroy = true
    }  
   
-  tags = merge(var.default_tags,
-    {
+  tags ={
       "Name" = "${var.prefix}-Amazon-Linux : ${var.env} Server 5"
     }
-  )
+  
   
 #user_data  = file("install_httpd.sh")
 }
@@ -313,11 +310,10 @@ resource "aws_instance" "my_amazon5" {
     create_before_destroy = true
    }  
   
-  tags = merge(var.default_tags,
-    {
+  tags =  {
       "Name" = "${var.prefix}-Amazon-Linux : ${var.env} Server 6"
     }
-  )
+  
   
 #user_data  = file("install_httpd.sh")
 }
