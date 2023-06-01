@@ -1,6 +1,6 @@
 [linux]
-linux1 ansible_host=184.72.85.206    owner=acs730
-linux2 ansible_host=204.236.242.206  owner=caaacs
+linux1 ansible_host=3.236.134.199    owner=acs730
+linux2 ansible_host=44.211.177.182  owner=caaacs
 
 [servers_all:children]
 linux

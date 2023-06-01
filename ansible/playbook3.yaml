@@ -1,5 +1,5 @@
 ---
-- hosts: linux
+- hosts: tag_Sunil
   gather_facts: True
   become: yes
   
