@@ -48,19 +48,19 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init -upgrade 
-        working-directory: ProjectWeek6/dev/network
+        working-directory: dev/instance
 
            
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        working-directory: ProjectWeek6/dev/network
+        working-directory: dev/instance
 
     
       - name: Terraform Plan
         id: plan
         run: terraform plan -input=false -no-color -out tf.plan
-        working-directory: ProjectWeek6/dev/network # Use your environment folder
+        working-directory: dev/instance # Use your environment folder
         continue-on-error: true
 
       - name: Get result
@@ -69,7 +69,7 @@ jobs:
       - name: Terraform Show
         id: show
         run: terraform show -no-color tf.plan 2>&1 > /tmp/plan.txt
-        working-directory: ProjectWeek6/dev/network # Use your environment folder
+        working-directory: dev/instance # Use your environment folder
           
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
@@ -110,7 +110,7 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'pull_request'
         run: terraform apply -input=false tf.plan
-        working-directory: ProjectWeek6/dev/network # Use your environment folder
+        working-directory: dev/instance # Use your environment folder
         shell: bash
         
 
